@@ -1,0 +1,7 @@
+
+console.log("#follow_<%=@followee.id%>");
+console.log("<%=@followee.followed(@followee.id,@follower.id)%>");
+console.log("<%=@followee.followers.length%>")
+$("#follow_<%=@followee.id%>").text("<%=@followee.followed(@followee.id,@follower.id)%>");
+$("#followings_<%=@follower.id%>").text("<%=@follower.followings.length%>");
+$("#followers_<%=@followee.id%>").text("<%=@followee.followers.length%>");

@@ -1,0 +1,22 @@
+<main>
+<%if User.roles[current_user.role]>1%>
+
+<%=link_to 'add new product',new_product_path,method: :get%><br>
+<%end%>
+<% product = Product.all%>
+<%count = 0%>
+<% product.each do|f|%>
+	<div class="product">
+
+	<% if f.picture_file_name%>
+		<%=image_tag f.picture.url(:medium)%>
+	<%end%>
+	<br><%= link_to f.name, :controller => "home", :action => "productpage", :id => f.id %>
+	</div>
+	<%count+=1%>
+	<%if count%3==0%>
+	<br>
+	<%end%>
+	
+<%end%>
+</main>

@@ -1,0 +1,381 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+	padding:0px;
+	margin:0px;
+}
+
+header.logout{
+	position:fixed;
+	top:0;
+	display:flex;
+	align-items:center;
+	background-color: #C40000;
+	color: white;
+	a{
+		color:white;
+		font-size:15px;
+
+	}
+	justify-content: space-around;
+	width:95.8%;
+	border-bottom: 1.5px solid black;
+	padding: 1.5% 2%;
+	div.logo{
+	width: 20%;
+		nav{
+			ul{
+				li{
+				display:inline-block;
+				list-style: none;
+					img{
+
+					}
+				}
+			}
+		}
+	}
+	nav{
+			ul{
+				li{
+				display:inline-block;
+				list-style: none;
+					img{
+
+					}
+				}
+			}
+		}
+	
+}
+header.login{
+	position:fixed;
+	top:0;
+	display:flex;
+	align-items:center;
+	background-color: #C40000;
+	color: white;
+	a{
+		color:white;
+		font-size:15px;
+
+	}
+	justify-content: space-around;
+	width:95.8%;
+	border-bottom: 1.5px solid black;
+	padding: 1.5% 2%;
+	div.logo{
+	width: 25%;
+		nav{
+			ul{
+				li{
+				display:inline-block;
+				list-style: none;
+					img{
+
+					}
+				}
+			}
+		}
+	}
+	div.searchBar{
+		width:50%;
+		form{
+			input#username{
+				width: 80%;
+				padding: 2% 2%;
+
+			}
+			input{
+				width:4%;
+				
+			}
+		}
+	}
+	nav.login{
+	width: 28%;
+		ul{
+			display:flex;
+			align-items:center;
+
+			justify-content:space-between;
+			li{
+				list-style:none;
+				div{
+					img{
+						width: 50px;
+						height: 50px;
+						border: 1px solid black;
+						border-radius: 50%;
+					}
+				}
+				div.dropdown_notification{
+					button.notibtn{
+						font-size:34px;
+						
+					}
+					span#notification_count{
+						color:white;
+					}
+					div.notification_content{
+						display:none;
+					}
+				}
+			}
+		}
+	}
+}
+
+div.product{
+	width:  300px;
+	height: auto;
+	padding: 2% 2%;
+	margin: 0.5% 0.5%;
+	display: inline-block;
+	border: 1px solid black;
+	image{
+		align: center;
+	}
+}
+div.functions{
+	margin-top: -2%;
+	
+	width: 100%;
+	padding: 1% 0%;
+	height: auto;
+	a{
+		font-size: 36px;
+		color:white;
+	}
+	display:flex;
+	div{
+		text-align:center;
+	}
+	div.blog{
+	border-right: 2px solid white;
+		color:white;
+		width:50%;
+		display:inline-block;
+	}
+	div.ecommerce{
+		a{
+			font-size: 36px;
+			color:white;
+		}
+		width:50%;
+		display:inline-block;
+
+	}
+}
+main{
+	margin-top:8%;
+	width: 100%;
+	height: auto;
+	section{
+		background-color: #f4f4ef;
+		width: 60%;
+		margin-left:18%;
+		padding: 5% 2%;
+		div#createPost{
+
+			textarea{
+				width: 98%;
+				height: 250px;
+				padding: 5px;
+                margin-bottom:5px;
+			}
+			form#new_post.new_post{
+				input#create-post-submit{
+					margin-bottom: 1%;
+				}
+			}
+		}
+		div#allposts{
+			background-color: #f4f4ef;
+			div.postShow{
+				background-color:white;
+				border: 1px solid grey;
+				border-radius: 2%;
+				padding: 5% 2%;
+				div{
+					img{
+					margin-left:27%;
+					margin-bottom:2%;
+					margin-top:2%;
+					}
+					a.liked{
+						color: white;
+						link-style: none;
+	                    padding: 4px 7px;
+	                    margin-top: 5px;
+	                    background-color: #3e78ad;
+	                    border-radius:4px;
+	                    font-size:15px;
+	                    padding:4px 7px;
+	                    border: 1px solid #234462;
+	                    color:white;
+					}
+					a.unliked{
+						padding: 4px 7px;
+	                    margin-top: 5px;
+						link-style: none;
+	                    background-color:#f1f8fb;
+	                    border-radius:4px;
+	                    font-size:15px;
+	                    padding:4px 7px;
+	                    border: 1px solid #3e78ad;
+	                    color:#3e78ad;
+					}
+					a.like{
+						color: #3e78ad;
+						
+					}
+					
+				}
+				div#createComment{
+					textarea{
+						width: 98%;
+						height: 100px;
+						padding: 5px;
+		                margin-bottom:5px;
+					}
+					form#new_comment.new_comment{
+						input#create-comment-submit{
+						margin-bottom: 1%;
+						}
+					}
+				}
+				div#allcomments{
+					div.commentShow{
+						border: 1px solid green;
+						padding: 5% 2%;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+main.profile{
+
+	img{
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		border: 1px solid black;
+	}
+	margin-bottom:-8%;
+}
+main.login{
+	margin-top: 8%;
+	width: 70%;
+	padding-left: 30%;
+	padding-top: 2%;
+	form#new_user.new_user{
+		div.field{
+			input#user_email{
+				padding: 0.2% 2%;
+			}
+			input#user_password{
+				padding: 0.2% 2%;
+			}
+		}
+	}
+}
+
+main.signup{
+	margin-top: 8%;
+	width: 70%;
+	padding-left: 30%;
+	padding-top: 2%;
+	form#new_user.new_user{
+		div.field{
+			input#user_email{
+				padding: 0.2% 2%;
+			}
+			input#user_firstname{
+				padding: 0.2% 2%;
+			}
+			input#user_lastname{
+				padding: 0.2% 2%;
+			}
+			input#user_username{
+				padding: 0.2% 2%;
+			}
+			input#user_password_confirmation{
+				padding: 0.2% 2%;
+			}
+			input#user_password{
+				padding: 0.2% 2%;
+			}
+		}
+	}
+}
+
+
+
+
+main.users{
+	margin-top:8%;
+	width:80%;
+    display:flex;
+    flex-direction:column;
+    padding-left: 20%;
+    padding-top: 5%;
+    div.user_template{
+        width:60%;
+        border:1px solid black;
+        border-bottom:none;
+        display:flex;
+        padding: 10px 15px;
+        flex-direction:row;
+        justify-content:space-between;
+        div.leftPart{
+             display:flex;
+            padding: 10px 15px;
+            flex-direction:row;
+            flex-grow:1;
+        
+        align-items:center;
+            span.left{
+                img{
+                    width:48px;
+                    height:48px;
+                    margin-right:25px;
+                    border-radius:50%;
+                }
+            }
+            span.right{
+               
+                a:hover{
+                background-color:white;
+                color:black;
+                }
+            }
+        }
+
+        div.rightPart{
+         display:flex;
+         width:40%;
+         align-items:center;
+        padding: 10px 15px;
+        flex-direction:row;
+        justify-content:space-around;
+            div.follow{
+                margin-left:25x;
+            }
+        }
+           
+    }
+    div.user_template:last-child{
+        border-bottom:1px solid black;
+    }
+}
+
+
+
+
+
+

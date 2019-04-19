@@ -1,0 +1,15 @@
+console.log("like_<%=@comment.id%>")
+$("#likecount_comment_<%=@comment.id%>").text("<%= @comment.likecs.count %>")
+<%if @likec%>
+$("#like_comment_<%=@comment.id%>").removeClass('like');
+$("#like_comment_<%=@comment.id%>").addClass('unlike');
+noty({text: "comment's like removed successfully!!", type: 'alert', timeout: 2000, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+<%else%>
+$("#like_comment_<%=@comment.id%>").removeClass('unlike');
+$("#like_comment_<%=@comment.id%>").addClass('like');
+
+
+noty({text: 'comment liked successfully!!', type: 'success', timeout: 2000, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+<%end%>

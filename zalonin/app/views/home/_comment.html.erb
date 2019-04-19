@@ -1,0 +1,22 @@
+
+	<div class="commentShow" id = "die_comment_<%=comment.id%>">
+			<div>
+			<div class="buttonFlex">
+					commented by <%=comment.user.username%>
+
+					on <%=comment.created_at.strftime("%A %B %d, %y")%>
+			
+			<%if User.roles[current_user.role] > 1 || current_user.id == comment.user.id%>
+					
+					<%=link_to "edit",edit_comment_path(id: comment.id),method: :get%>
+					<%= link_to "delete",comment_path(id: comment.id),method: :delete,data: {confirm:"Are you sure?"},:remote=> true%>
+					<%end%>
+					
+
+			<h1><b><%=markdown comment.content%></b></h1>
+			</div>
+		<%= link_to 'Like', url_for(controller: 'likecs', action: 'likeToggleComment', comment: comment.id), method: :post,id: "like_comment_#{comment.id}", remote: true, class: comment.classStringComment(current_user.id)%>   <span id="likecount_comment_<%=comment.id%>"><%= comment.likecs.count %></span>
+
+			</div>
+	</div>
+			

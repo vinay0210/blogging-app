@@ -1,0 +1,53 @@
+
+<div class="postShow" id= "die_<%=post.id%>">
+			<div>
+			
+					posted by <%=post.user.username%>
+
+					on <%=post.created_at.strftime("%A %B %d, %y")%>
+
+
+					<%if User.roles[current_user.role]>1||current_user.id == post.user.id%>
+						<%=link_to "Edit",edit_post_path(post.id),method: :get, :remote => false, id: "myBtn_#{post.id}" %>
+						<%= link_to "Delete", post_path(post.id),method: :delete ,data: { confirm: "Are you sure?"}, :remote => true,      :class => "delete_post"%>
+					<%end%>
+					
+
+
+
+
+					
+					<% if post.attachment_file_name%>
+					<br>
+						<%= image_tag post.attachment.url(:medium)%>
+					<%end%>
+
+			<h1><b><%=markdown post.content%></b></h1>
+			<br>
+			<%= link_to 'Like', url_for(controller: 'likeps', action: 'likeToggle', post: post.id), method: "post",id: "like_post_#{post.id}", remote: true, class: post.classStringPost(current_user.id) %>   <span id="likecount_post_<%=post.id%>"><%= post.likeps.count %></span>
+
+			</div>
+
+
+	<%@comment=Comment.new%>
+  	<div id="createComment">
+		<%= form_for @comment , remote: true do |f|%>
+		<% f.label :createComment %> <br>
+  		<%= f.hidden_field :post_id, :value => post.id %>
+		<%=f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.text_area :content, id: "comment_content_#{post.id}"%>  <br>
+		<%= f.submit  value:"Comment", id:  'create-comment-submit'%>
+		
+		<%end%>
+	</div>
+  	<%@comment_feed=Comment.where(post_id: post.id).order(created_at: :desc)%>
+	<div id="allcomments_<%=post.id%>">
+	<%  @comment_feed.each do |comment| %><br>
+			<%=render('comment',comment: comment)%>
+ 	<%end%>
+
+ 	</div>
+
+
+
+	</div>

@@ -1,0 +1,45 @@
+
+<main class="profile">
+	<%@user = User.find_by_id(params[:id])%>
+	<%if @user.profilepicture_file_name%>
+		<%= image_tag @user.profilepicture.url%>
+	<%else%>
+			<img src="/profile.png">
+	<%end%>
+	<h3> <%=@user.email%></h3>
+	<% if @user == current_user%>
+		<%= form_tag url_for(controller: :home, action: :profile_picture), multipart: true do %>
+
+		<%= file_field_tag :profilepicture %>
+		<br>
+		<%= submit_tag %>
+
+		<% end %>
+	<%end%>
+</main>
+<main>
+<section>
+	<div>
+	<%if @user.posts.any?%>
+	    <%post = Post.where(user_id: @user.id)%>		
+	 	<div id="allposts">
+		<%  post.each do |post| %><br>
+				<%=render('post',post: post)%>
+	 	<%end%>
+
+	 	</div>
+
+	<%else%>
+		<%if current_user == @user%>
+		<h2>You have not posted any post yet!!</h2>
+		<%else%>
+		<h2>This user has not posted any post yet!!</h2>
+		<%end%>
+	<%end%>
+
+	</div>
+
+</section>
+
+
+</main>

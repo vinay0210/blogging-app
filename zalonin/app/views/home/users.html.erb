@@ -1,0 +1,28 @@
+
+<main class="users">
+
+
+
+<h2><%=@users.length%> search results<br><br></h2>
+<%@users.each do |user|%>
+	<div class="user_template">
+		<div class="leftPart">
+			<span class="left">
+				<%if user.profilepicture_file_name%>
+					<%= image_tag user.profilepicture.url%>
+				<%else%>
+						<img src="/profile.png">
+				<%end%>
+			</span>
+			<span class="right">
+				<h3><%= link_to "#{user.username}",url_for(controller:'home',action: 'profilepage',id: user.id)%></h3>
+			</span>
+		</div>
+	
+	<div class="rightPart">
+		<%=link_to user.followed(user.id,current_user.id), url_for(controller: 'home', action: 'follow',followee_id: user.id),remote: true,method: :post,id: "follow_#{user.id}"%>
+		 <div class="follow"> followers: <span id="followers_<%=user.id%>"><%=user.followers.length%></span> followings: <span id="followings_<%=user.id%>"><%=user.followings.length%></span></div><br>
+	 </div>
+	 </div>
+<%end%>
+</main>

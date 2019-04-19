@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zalonin</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+</head>
+<body>
+<% if notice %>
+
+<script type="text/javascript">
+	noty({text: '<%= notice %>', type: 'success', timeout: 1000, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+</script>
+<% end%>
+
+<% if  alert %>
+<script type="text/javascript">
+	noty({text: '<%=alert %>', type: 'error',timeout: 1000, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+</script>
+
+<% end%>
+<%if current_user%>
+
+<header class="login">
+	<div class="logo">
+		<nav>
+			<ul>
+				<li><%= link_to "Logo",home_zalonin_path,method: :get%></li>
+				<li><%= link_to "Blog",home_blog_path,method: :get%></li>
+				<li><%= link_to "Shopping",home_ecommerce_path,method: :get%></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="searchBar">
+
+		<%= form_tag(home_users_path, method: :get) do  %>
+		  	<%= search_field_tag "username",'', placeholder: "Search via username",required: true %>
+		  	<%= image_submit_tag 'search.png' %>
+		<% end %>
+	</div>
+	<nav class="login">
+		<ul>
+			<li>
+				<%if current_user.profilepicture_file_name%>
+					<div><%= link_to image_tag(current_user.profilepicture.url), :controller => "home", :action => "profilepage", :id => current_user.id %></div>
+				<%else%>
+					<div><%= link_to image_tag("/profile.png"), :controller => "home", :action => "profilepage", :id => current_user.id %></div>
+				<%end%>
+			</li>
+			
+			<li>
+				
+					Hello <%=current_user.firstname%>!! 
+				
+			</li>
+	<!--		<li>
+				<div class="dropdown_notification" data-behavior="notifications">
+					<button class="notibtn">
+						<%= fa_icon "bell"%>
+					</button>
+					<span id="count_notifications">0</span>
+					<div class="notification_content" >
+						<a class="dropdown-item" href="#">Action1</a><br>
+						<a class="dropdown-item" href="#">Action2</a><br>
+						<a class="dropdown-item" href="#">Action3</a>
+						
+					</div>
+			</li>      -->
+			<li>
+				
+					<%= link_to "Sign Out",destroy_user_session_path,method: :delete ,data: {confirm:"Are you sure?"}%>
+				
+			</li>
+			<li>
+				<%=link_to "CART",:controller=>"carts" ,:action=>"status"%>
+				<span> (<%=current_user.carts.count%>)</span>
+			</li>
+
+
+		</ul>
+	</nav>
+</header>
+
+<%end%>
+
+<%if current_user == nil%>
+<header class="logout">
+
+	<div class="logo">
+		<%= link_to "Logo",home_zalonin_path,method: :get%>
+		<%= link_to "Blog",home_blog_path,method: :get%>
+		<%= link_to "Shopping",home_ecommerce_path,method: :get%>
+	</div>
+
+	<nav>
+	<ul>
+	<li>
+		<%= link_to "Sign in",new_user_session_path,method: :get%>
+		</li>
+		<li>
+		<%= link_to "Sign up",new_user_registration_path,method: :get%>
+	</li>
+	</ul>
+	</nav>
+
+</header>
+<%end%>
+<%= yield %>
+
+</body>
+</html>

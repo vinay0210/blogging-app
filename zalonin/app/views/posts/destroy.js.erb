@@ -1,0 +1,12 @@
+
+console.log("here")
+
+noty({text: 'Post is successfully destroyed!!', type: 'success', timeout: 1500, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+
+
+
+$(function() {
+    $('#die_<%=@post.id%>').fadeOut(1000);
+	
+});

@@ -1,0 +1,10 @@
+<main>
+<% cart = Cart.where(user_id: current_user)%>
+<% cart.each do|f|%>
+
+<%=f.product.name%><br>
+<%=f.quantity%>
+<%=f.product.price*f.quantity%>
+<%=image_tag f.product.picture.url(:medium)%>
+<%end%>
+</main>

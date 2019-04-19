@@ -1,0 +1,31 @@
+<main>
+	<section>
+	<div id="createPost">
+		Create Post:
+		<%= form_for @post , remote: true , html: { multipart: true } do |f|%>
+		<%= f.text_area :content%>  <br><br>
+		<%= f.file_field :attachment %><br><br>
+		<%= f.submit  value:"Post", id:  'create-post-submit'%>
+		<br>
+		<%end%>
+	</div>
+
+	<% if @post.errors.any? %>
+        		<% @post.errors.full_messages.each do |message| %>
+	   				<script type="text/javascript">
+					noty({text: '<%= message %>', type: 'error', theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+					</script>
+     			<% end %>
+ 	<% end %>
+	
+ 	<div id="allposts">
+	<%  @post_feed.each do |post| %><br>
+			<%=render('post',post: post)%>
+ 	<%end%>
+
+ 	</div>
+
+ 	</section>
+
+ </main>

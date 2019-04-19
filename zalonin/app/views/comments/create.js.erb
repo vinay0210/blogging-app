@@ -1,0 +1,13 @@
+console.log("here")
+<%if @comment.errors.any?%>
+
+noty({text: "<%=@comment.errors.full_messages.first%>", type: 'alert', timeout: 2000, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+
+
+<%else%>
+$('#allcomments_<%=@comment.post.id%>').prepend("<%= escape_javascript (render 'home/comment', post: @comment.post.id, comment: @comment ) %>");
+$('#comment_content_<%=@comment.post.id%>').val("");
+	noty({text: 'post successfully commented!!', type: 'success', timeout: 2000, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+<%end%>

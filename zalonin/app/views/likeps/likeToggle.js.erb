@@ -1,0 +1,15 @@
+console.log("<%=@likep%>")
+$("#likecount_post_<%=@post.id%>").text("<%= @post.likeps.count %>");
+
+<%if @likep%>
+$("#like_post_<%=@post.id%>").removeClass('liked');
+$("#like_post_<%=@post.id%>").addClass('unliked');
+noty({text: "post's like removed successfully!!", type: 'alert', timeout: 2000, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+<%else%>
+$("#like_post_<%=@post.id%>").removeClass('unliked');
+$("#like_post_<%=@post.id%>").addClass('liked');
+
+noty({text: "post's liked successfully!!", type: 'success', timeout: 2000, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+<%end%>

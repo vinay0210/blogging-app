@@ -1,0 +1,12 @@
+console.log("here")
+<%if @post.errors.any?%>
+noty({text: "<%=@post.errors.full_messages.first%>", type: 'alert', timeout: 1500, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+<%else%>
+noty({text: 'Post is successfully added!!', type: 'success', timeout: 1500, theme: 'defaultTheme',maxVisible: 5,template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+progressBar: true});
+console.log("here")
+$('#allposts').prepend("<%= escape_javascript (render 'home/post', post: @post)%>");
+$('#post_content').val("");
+<%end%>
+console.log("success boi")
